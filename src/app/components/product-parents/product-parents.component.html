@@ -1,0 +1,25 @@
+
+<input [(ngModel)]="filterByPrice" class="form-control form-control-lg" type="number" placeholder="filter by brice">
+
+
+
+<app-product [filterByPrice]="filterByPrice" (eventADDTOCART)="cart($event)" > </app-product>
+
+<table class="table ">
+  <tr>
+    <th>name</th>
+    <th>price </th>
+    <th>quantity </th>
+    <th>total price </th>
+  </tr>
+
+  @for(prod of cartArry;track $index){
+<tr>
+  <td>{{prod.name}}</td>
+  <td>{{prod.price}}</td>
+  <td>{{prod.quantity}}</td>
+  <td>{{prod.totalPrice}}</td>
+</tr>
+  }
+
+</table>

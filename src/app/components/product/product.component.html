@@ -1,0 +1,60 @@
+
+<select  [(ngModel)]="filter" class="form-select" aria-label="Default select example">
+  <option selected>chairss</option>
+  <option value="dog">tables</option>
+  <option value="cat">screens</option>
+  <!-- <option value="3">Three</option> -->
+</select>
+<div class="d-flex justify-content-center">
+  <div class="form-outline w-35 d-flex " aria-label="Page navigation example">
+    <input type="text" class="form-control m-2 " placeholder="search by category" #inpValue >
+  </div>
+    <button (click)="search (inpValue.value)" class="btn btn-primary btn-lg m-2">search
+
+    </button>
+
+  </div>
+  <div class="container-fluid">
+    <h6> credit card   :   {{credit}}</h6>
+    <h6>credit card format : {{credit|creditCardFormat}}</h6>
+<h6>{{date|date:"short"}}</h6>
+<div class="row d-flex justify-content-evenly ">
+
+
+    @for(prod of afterfilter;track prod.id){
+
+        <div   class="col-md-3  text-center m-3 " appProdStyle  border1="black" border2="blue">
+            @if(showImg){
+            <div class="card-body m-3 "  >
+                <img (click)="prodDetails(prod.id)" class="col-md-4  card-img-top img-fluid  "style="height: 200px;  " src="{{prod.PrdimgURL}}" alt="Card image cap">
+                    <h5 class="card-title" [class.bg-danger]="prod.quantity > 1" >{{prod.name}}</h5>
+                    <h4>{{prod.price|currency}}</h4>
+                    <p class="card-text">{{prod.quantity}}</p>
+
+                    <h6>
+
+                            @switch (prod.quantity) {
+                                @case(0){'out of stock '}
+
+                                @case(1){'last one item '}
+
+                                @case(2){'last two item  '}
+
+                                @default{'in stock '}
+
+                        }
+                    </h6>
+          </div>
+        }
+        @if(showText){
+                <h4>Thanks for purchasing from our Store ya {{clientName}} </h4>
+        }
+                <button (click)="toggle()" href="#" class="btn btn-primary" [disabled]="prod.quantity==0">Buy</button>
+                <button (click)="AddToCart(prod)"  href="#" class="btn btn-danger m-3" >add to cart</button>
+                <button (click)="update(prod.id)"  href="#" class="btn btn-danger m-3" >update</button>
+                <button (click)="delete(prod.id)"  href="#" class="btn btn-danger m-3" >delete</button>
+        </div>
+    }
+
+</div>
+</div>

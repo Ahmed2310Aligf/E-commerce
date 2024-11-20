@@ -1,0 +1,21 @@
+
+
+<div class="d-flex justify-content-center  ">
+  <form (ngSubmit)="loginFunc() "[hidden]="isLogin">
+
+    <div class="form-group row">
+      <label for="inputPassword" class="col-sm-3 col-form-label">email</label>
+      <div class="col-sm-9">
+        <input type="email" class="form-control " id="inputPassword" placeholder="email" [(ngModel)]="email" name="name">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword" class="col-sm-3 col-form-label">password</label>
+      <div class="col-sm-9">
+        <input type="password" class="form-control " id="inputPassword" placeholder="password" [(ngModel)]="password"name="price">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">login</button>
+  </form>
+  <button type="button" (click)="logOutFunc()" class="btn btn-primary"[hidden]="!isLogin">logOut</button>
+  </div>
